@@ -3,7 +3,8 @@ require('dotenv').config()
 const os = require('os')
 const Telegraf = require('telegraf')
 const http = require('http')
-const Iconv  = require('iconv').Iconv;
+const Iconv  = require('iconv').Iconv
+const https = require('https')
 
 const urlForJoke = 'http://rzhunemogu.ru/RandJSON.aspx?CType=1'
 
@@ -80,3 +81,7 @@ bot.hears('hi', (ctx) => {
 })
 
 bot.launch()
+
+https.createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
+    res.end('')
+})
